@@ -102,22 +102,28 @@ class Game {
 
         if (player.index !== null) {
             //fill code here, to destroy the objects.
+            //var plr in allPlayers;
             for (var i = 0; i < fruitGroup.length; i++) {
                 if (fruitGroup.get(i).isTouching(player1)) {
                     fruitGroup.get(i).destroy();
-                    count1++
+                    player.score++;
+                    count1++;
                 }
                 if (fruitGroup.get(i).isTouching(player2)) {
                     fruitGroup.get(i).destroy();
-                    count2++
+                    player.score++;
+                    count2++;
                 }
+                player.update();
             }
 
+            //var plr in allPlayers;
             stroke("white");
             strokeWeight(5);
-            fill("red")
-            text("Player1" + count1, 50, 50);
-            text("Player2 : " + count2, 50, 100);
+            fill("red");
+            text("Player1: " + count1, 50, 50);
+            text("Player2: " + count2, 50, 100);
+
         }
 
     }
@@ -125,4 +131,5 @@ class Game {
     end() {
         console.log("Game Ended");
     }
+    
 }

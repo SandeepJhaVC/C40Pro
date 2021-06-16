@@ -34,6 +34,10 @@ class Player {
             allPlayers = data.val();
         })
     }
-
-
+    getScore() {
+        var playerScoreRef = database.ref('players');
+        playerScoreRef.on("value", (data) => {
+          score = data.val();
+        })
+      }
 }
