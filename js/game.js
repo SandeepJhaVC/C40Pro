@@ -46,8 +46,6 @@ class Game {
         var index = 0;
         drawSprites();
         for (var plr in allPlayers) {
-
-
             index = index + 1;
             x = 500 - allPlayers[plr].distance;
             y = 500;
@@ -56,20 +54,11 @@ class Game {
             players[index - 1].y = y;
 
             if (index === player.index) {
-
                 fill("black");
                 textSize(25);
                 text(allPlayers[plr].name, x - 25, y + 25);
-
-
             }
-
-
-
         }
-
-
-
 
         if (keyIsDown(RIGHT_ARROW) && player.index !== null) {
             player.distance -= 10
@@ -104,26 +93,25 @@ class Game {
             //fill code here, to destroy the objects.
             //var plr in allPlayers;
             for (var i = 0; i < fruitGroup.length; i++) {
-                if (fruitGroup.get(i).isTouching(player1)) {
+                if (fruitGroup.get(i).isTouching(players)) {
                     fruitGroup.get(i).destroy();
                     player.score++;
-                    count1++;
-                }
+                    player.update();
+                    //count1++;
+                }/*
                 if (fruitGroup.get(i).isTouching(player2)) {
                     fruitGroup.get(i).destroy();
                     player.score++;
                     count2++;
-                }
-                player.update();
+                }*/
+
+                stroke("white");
+                strokeWeight(5);
+                fill("red");
+                text("Player1: " + allPlayers.player1.score, 50, 50);
+                text("Player2: " + allPlayers.player2.score, 50, 100);
             }
-
-            //var plr in allPlayers;
-            stroke("white");
-            strokeWeight(5);
-            fill("red");
-            text("Player1: " + count1, 50, 50);
-            text("Player2: " + count2, 50, 100);
-
+ll
         }
 
     }
@@ -131,5 +119,5 @@ class Game {
     end() {
         console.log("Game Ended");
     }
-    
+
 }
